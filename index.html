@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picapica</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ffffff, #333333);
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .description {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .photo-strip {
+            border: 5px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            background: white;
+        }
+        .start-button {
+            background: white;
+            border: 2px solid black;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .start-button:hover {
+            transform: scale(1.05);
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hallo</h1>
+        <p class="description">Beta Test Photo App</p>
+        
+        <button class="start-button" onclick="location.href='welcome.html'">START</button>
+        <p class="footer">made by <span style="opacity: 0.5;">heisenberry</span></p>
+    </div>
+</body>
+</html>

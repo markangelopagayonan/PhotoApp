@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ffffff, #333333); /* Your color */
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .start-button {
+            background: white;
+            border: 2px solid black;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border-radius: 10px;
+        }
+        .start-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome!</h1>
+        <p><strong>📸 Get ready! You have 3 seconds for each shot—no do-overs!</p>
+        <p>📷 4 pictures in a row – keep the energy up!</p>
+        <p>💾 Download your photos & spread the joy!</p>
+        <button class="start-button" onclick="location.href='PhotoBoothApp.html'">START</button>
+    </div>
+</body>
+</html>

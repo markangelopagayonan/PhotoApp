@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Strip Preview</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ffffff, #222222); /* Black-to-white gradient */
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        #photo-strip {
+            width: 200px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px solid black;
+        }
+
+        .photo {
+            width: 180px;
+            height: 240px;
+            background: gray;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid black;
+            border-radius: 25px;
+            background: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Photo Strip Preview</h1>
+
+    <div id="photo-strip">
+        <img id="photo1" class="photo" src="" alt="Photo 1">
+        <img id="photo2" class="photo" src="" alt="Photo 2">
+        <img id="photo3" class="photo" src="" alt="Photo 3">
+        <img id="photo4" class="photo" src="" alt="Photo 4">
+    </div>
+
+    <button id="download">Download Photo Strip</button>
+    <button onclick="window.location.href='index.html'">Take New Photos</button>
+
+    <script>
+        const photos = JSON.parse(localStorage.getItem('capturedPhotos')) || [];
+
+        if (photos.length === 4) {
+            document.getElementById('photo1').src = photos[0];
+            document.getElementById('photo2').src = photos[1];
+            document.getElementById('photo3').src = photos[2];
+            document.getElementById('photo4').src = photos[3];
+        }
+
+        document.getElementById('download').addEventListener('click', () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 200;
+            canvas.height = 960; // 4 stacked images
+
+            const images = photos.map(src => {
+                const img = new Image();
+                img.src = src;
+                return img;
+            });
+
+            Promise.all(images.map(img => new Promise(resolve => img.onload = resolve))).then(() => {
+                images.forEach((img, index) => {
+                    ctx.drawImage(img, 0, index * 240, 200, 240);
+                });
+
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = 'photo_strip.png';
+                link.click();
+            });
+        });
+    </script>
+</body>
+</html>
